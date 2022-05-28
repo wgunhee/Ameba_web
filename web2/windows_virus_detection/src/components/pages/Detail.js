@@ -11,15 +11,15 @@ function Detail() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get('/api/getData');
+        const { data: response } = await axios.get('api/getData');
         setData(response);
-        console.log(data);
-        if(data.length!=0){
-          setRes(true);
-          console.log(response)
-        }else{
-          setRes(false);
-        }
+        console.log(response);
+        
+        setRes(true);
+        
+        console.log(res);
+        console.log(response);
+        
       } catch (error) {
         console.error(error)
       }
@@ -32,7 +32,7 @@ function Detail() {
   return (
     <div className="contents">
       {loading && <div className='load'>Loading</div>}
-      {!loading && res && (
+      {(!loading && res ) && (
         <div>
           <h1 className="detail">Detail</h1>
           <table className="tables">
@@ -65,8 +65,9 @@ function Detail() {
             </tbody>
           </table>
         </div>)}
-        {(!loading && !res) && <div className='nodata'>데이터가 없습니다.</div>
-        }
+        {(!loading && !res)
+         && <div className='nodata'>{res}데이터가 없습니다.</div>
+         }
       <Footer />
     </div>
   );

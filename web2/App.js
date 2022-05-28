@@ -19,7 +19,8 @@ let sqlQuery =
       JOIN FileHeader AS H ON K.MD5 = H.MD5\
       JOIN OptionalHeader AS O ON O.MD5=K.MD5\
       JOIN SectionHeader AS S ON S.MD5=K.MD5\
-      WHERE K.MD5 =";
+      WHERE K.MD5 = '";
+let sqlQ="";
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -28,16 +29,17 @@ app.get('/', (req, res) => {
 });
 app.post('/api/setMD5', (req, res) => {
     const md5 = req.body.md;
-    sqlQuery=sqlQuery+md5;
-    console.log(sqlQuery); 
+    sqlQ=sqlQuery+md5+"'";
+    //sqlQuery=sqlQuery+"13"; //sampledata
+    console.log(sqlQ); 
     res.send('성공')
 });
 app.get('/api/getData', (req, res) => {
     
-    db.query(sqlQuery, (err, data) => {
+    db.query(sqlQ, (err, data) => {
         if (err) {
             console.log('err');
-            res.send(err);
+            res.send(err, data);
         }
         else {
             console.log('success');

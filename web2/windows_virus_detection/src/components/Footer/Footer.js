@@ -21,7 +21,7 @@ function Footer() {
                     <div className='footer-link-wrapper'>
                     <div class='footer-link-items'>
                         <h2>Videos</h2>
-                        <a href='https://www.youtube.com/watch?v=Lent6ad4x7k'>How it works</a>
+                        <a href='https://youtu.be/cocWBKA1uMg'>How it works</a>
                     </div>
                     <div class='footer-link-items'>
                         <h2>Social Media</h2>
